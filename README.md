@@ -10,13 +10,16 @@ import 'package:walletika_api/walletika_api.dart';
 // Create new object of WalletikaAPI
 WalletikaAPI walletikaAPI = WalletikaAPI('key');
 
-// Load json data
+// Load coins data
 await walletikaAPI.load();
 
 // Set defailt coin image if not found
 walletikaAPI.setDefaultCoinURLImage(
   'https://etherscan.io/images/main/empty-token.png',
 );
+
+// Check connection
+walletikaAPI.isConnected;
 ```
 
 ### Use `getCoinPrice` function to get coin price
@@ -32,8 +35,8 @@ CoinPrice coinPrice = await walletikaAPI.getCoinPrice(CoinEntry(
 ));
 // Coin details
 String symbol = coin.symbol;
-Double price = coin.price;
-Double changeIn24h = coin.changeIn24h;
+double price = coin.price;
+double changeIn24h = coin.changeIn24h;
 ```
 
 ### Use `getCoinImage` function to get coin image

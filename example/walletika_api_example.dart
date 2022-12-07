@@ -4,11 +4,17 @@ void main() async {
   // Create new object of WalletikaAPI
   WalletikaAPI walletikaAPI = WalletikaAPI('key');
 
-  // Load json data
+  // Load coins data
   await walletikaAPI.load();
 
   // Download latest update of CoinGecko
   await walletikaAPI.update();
+
+  // Send ping package
+  await walletikaAPI.ping();
+
+  // Check connection
+  walletikaAPI.isConnected;
 
   // Set defailt coin image if not found
   walletikaAPI.setDefaultCoinURLImage(
