@@ -13,16 +13,16 @@ platforms:
 publish_to: none
 
 environment:
-  sdk: '>=2.18.3 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
-  path: ^1.8.2
-  coingecko_api: ^1.1.0
+  path: ^1.8.3
+  coingecko_api: 1.1.0
   aescrypto:
     git:
       url: https://github.com/MahmoudKhalid/aescrypto-dart.git
       ref: main
 
 dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.16.0
+  lints: ^2.0.1
+  test: ^1.22.1
