@@ -35,3 +35,35 @@ class CoinImage {
     required this.imageURL,
   });
 }
+
+class CoinListed {
+  final String name;
+  final String symbol;
+  final List<dynamic> contracts;
+  final double price;
+  final String imageURL;
+
+  CoinListed({
+    required this.name,
+    required this.symbol,
+    required this.contracts,
+    required this.price,
+    required this.imageURL,
+  });
+
+  factory CoinListed.fromJson(Map<String, dynamic> json) => CoinListed(
+        name: json["name"],
+        symbol: json["symbol"],
+        contracts: json["contracts"],
+        price: json["price"],
+        imageURL: json["image"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "symbol": symbol,
+        "contracts": contracts,
+        "price": price,
+        "image": imageURL,
+      };
+}
