@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:coingecko_api/coingecko_api.dart';
 import 'package:coingecko_api/coingecko_result.dart';
@@ -8,7 +7,6 @@ import 'package:coingecko_api/data/coin_short.dart';
 Future<Map<String, List<Map<String, dynamic>>>> pullData(
   CoinGeckoApi coinGeckoApi,
 ) async {
-  await Directory('assets').create();
   final Map<String, List<Map<String, dynamic>>> result = {};
   int totalCoins = 0;
 
