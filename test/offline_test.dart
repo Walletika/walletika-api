@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:aescrypto/aescrypto.dart';
 import 'package:walletika_api/src/core/core.dart';
 import 'package:walletika_api/walletika_api.dart';
 import 'package:test/test.dart';
@@ -12,32 +11,28 @@ void printDebug(String message) {
 
 void main() async {
   const String wtkImage =
-      'https://raw.githubusercontent.com/Walletika/metadata/main/walletika.png';
-  final String coinsFilePath = addAESExtension(coinsPath);
-  final String coinsCacheFilePath = addAESExtension(coinsCachePath);
-  final WalletikaAPI walletikaAPI = WalletikaAPI(
-    '123456',
-    walletikaImage: wtkImage,
-  );
+      'https://raw.githubusercontent.com/Walletika/metadata/main/coins/walletika.png';
 
   group('Walletika API Offline Group:', () {
-    test('Test (load & update & ping)', () async {
-      await walletikaAPI.load();
+    test('Test (init)', () async {
+      await WalletikaAPI.init('123456');
+      bool isConnected = await WalletikaAPI.isConnected();
 
       printDebug("""
-isConnected: ${walletikaAPI.isConnected}
+isConnected: $isConnected
 """);
 
-      expect(walletikaAPI.isConnected, isFalse);
-      expect(File(coinsFilePath).existsSync(), isFalse);
-      expect(File(coinsCacheFilePath).existsSync(), isFalse);
+      expect(isConnected, isFalse);
+      expect(File(coinsAESPath).existsSync(), isFalse);
+      expect(File(coinsCacheAESPath).existsSync(), isFalse);
+      expect(File(coinsListedAESPath).existsSync(), isFalse);
     });
   });
 
   group('Coins Prices Group:', () {
     test('Test (getCoinsPrices)', () async {
       List<String> symbols = ['BTC', 'ETH', 'BNB', 'MATIC'];
-      List<CoinPrice> coins = await walletikaAPI.getCoinsPrices(
+      List<CoinPrice> coins = await WalletikaAPI.getCoinsPrices(
         symbols.map((symbol) => CoinEntry(symbol: symbol)).toList(),
       );
 
@@ -57,7 +52,7 @@ changeIn24h: ${coin.changeIn24h}
     });
 
     test('Test (getCoinPrice) USDT by name', () async {
-      CoinPrice coin = await walletikaAPI.getCoinPrice(CoinEntry(
+      CoinPrice coin = await WalletikaAPI.getCoinPrice(CoinEntry(
         symbol: 'USDT',
         name: 'Tether',
       ));
@@ -74,7 +69,7 @@ changeIn24h: ${coin.changeIn24h}
     });
 
     test('Test (getCoinPrice) USDT by name and contract address', () async {
-      CoinPrice coin = await walletikaAPI.getCoinPrice(CoinEntry(
+      CoinPrice coin = await WalletikaAPI.getCoinPrice(CoinEntry(
         symbol: 'USDT',
         name: 'Tether',
         contractAddress:
@@ -93,7 +88,7 @@ changeIn24h: ${coin.changeIn24h}
     });
 
     test('Test (getCoinPrice) USDT by wrong name', () async {
-      CoinPrice coin = await walletikaAPI.getCoinPrice(CoinEntry(
+      CoinPrice coin = await WalletikaAPI.getCoinPrice(CoinEntry(
         symbol: 'USDT',
         name: 'Anyname',
       ));
@@ -108,6 +103,24 @@ changeIn24h: ${coin.changeIn24h}
       expect(coin.price, isNull);
       expect(coin.changeIn24h, isNull);
     });
+
+    test('Test (getCoinPrice) for WTK', () async {
+      CoinPrice coin = await WalletikaAPI.getCoinPrice(CoinEntry(
+        symbol: 'WTK',
+        name: 'Walletika',
+        contractAddress: '0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87',
+      ));
+
+      printDebug("""
+symbol: ${coin.symbol}
+price: ${coin.price}
+changeIn24h: ${coin.changeIn24h}
+""");
+
+      expect(coin.symbol, equals('WTK'));
+      expect(coin.price, isNull);
+      expect(coin.changeIn24h, isNull);
+    });
   });
 
   group('Coins Images Group:', () {
@@ -118,7 +131,7 @@ changeIn24h: ${coin.changeIn24h}
         'https://etherscan.io/images/main/empty-token.png',
       ];
       List<String> symbols = ['ETH', 'BNB', 'MATIC'];
-      List<CoinImage> coins = await walletikaAPI.getCoinsImages(
+      List<CoinImage> coins = await WalletikaAPI.getCoinsImages(
         symbols.map((symbol) => CoinEntry(symbol: symbol)).toList(),
       );
 
@@ -136,7 +149,7 @@ imageURL: ${coin.imageURL}
     });
 
     test('Test (getCoinImage) USDT by name', () async {
-      CoinImage coin = await walletikaAPI.getCoinImage(CoinEntry(
+      CoinImage coin = await WalletikaAPI.getCoinImage(CoinEntry(
         symbol: 'USDT',
         name: 'Tether',
       ));
@@ -154,7 +167,7 @@ imageURL: ${coin.imageURL}
     });
 
     test('Test (getCoinImage) USDT by name and contract address', () async {
-      CoinImage coin = await walletikaAPI.getCoinImage(CoinEntry(
+      CoinImage coin = await WalletikaAPI.getCoinImage(CoinEntry(
         symbol: 'USDT',
         name: 'Tether',
         contractAddress:
@@ -174,7 +187,7 @@ imageURL: ${coin.imageURL}
     });
 
     test('Test (getCoinImage) USDT by wrong name', () async {
-      CoinImage coin = await walletikaAPI.getCoinImage(CoinEntry(
+      CoinImage coin = await WalletikaAPI.getCoinImage(CoinEntry(
         symbol: 'USDT',
         name: 'Anyname',
       ));
@@ -192,9 +205,10 @@ imageURL: ${coin.imageURL}
     });
 
     test('Test (getCoinImage) for WTK', () async {
-      CoinImage coin = await walletikaAPI.getCoinImage(CoinEntry(
+      CoinImage coin = await WalletikaAPI.getCoinImage(CoinEntry(
         symbol: 'WTK',
         name: 'Walletika',
+        contractAddress: '0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87',
       ));
 
       printDebug("""
@@ -203,7 +217,10 @@ imageURL: ${coin.imageURL}
 """);
 
       expect(coin.symbol, equals('WTK'));
-      expect(coin.imageURL, equals(wtkImage));
+      expect(
+        coin.imageURL,
+        equals('https://etherscan.io/images/main/empty-token.png'),
+      );
     });
   });
 }
