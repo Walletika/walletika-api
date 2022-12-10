@@ -1,29 +1,23 @@
 import 'package:walletika_api/walletika_api.dart';
 
 void main() async {
-  // Create new object of WalletikaAPI
-  WalletikaAPI walletikaAPI = WalletikaAPI('key');
+  // WalletikaAPI initialize
+  await WalletikaAPI.init('key');
 
-  // Load coins data
-  await walletikaAPI.load();
-
-  // Download latest update of CoinGecko
-  await walletikaAPI.update();
-
-  // Send ping package
-  await walletikaAPI.ping();
+  // Download latest update from CoinGecko
+  await WalletikaAPI.update();
 
   // Check connection
-  walletikaAPI.isConnected;
+  await WalletikaAPI.isConnected();
 
   // Set defailt coin image if not found
-  walletikaAPI.setDefaultCoinURLImage(
+  WalletikaAPI.setDefaultCoinURLImage(
     'https://etherscan.io/images/main/empty-token.png',
   );
 
   // Get list of coins prices
   // CoinEntry symbol is required, You can more filter by address and name
-  List<CoinPrice> coinsPrices = await walletikaAPI.getCoinsPrices([
+  List<CoinPrice> coinsPrices = await WalletikaAPI.getCoinsPrices([
     CoinEntry(symbol: 'BTC'),
     CoinEntry(symbol: 'ETH'),
     CoinEntry(symbol: 'USDT'),
@@ -31,7 +25,7 @@ void main() async {
 
   // Get coin price
   // CoinEntry symbol is required, You can more filter by address and name
-  CoinPrice coinPrice = await walletikaAPI.getCoinPrice(CoinEntry(
+  CoinPrice coinPrice = await WalletikaAPI.getCoinPrice(CoinEntry(
     symbol: 'USDT',
     name: 'Tether',
     contractAddress: '0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
@@ -39,7 +33,7 @@ void main() async {
 
   // Get list of coins images
   // CoinEntry symbol is required, You can more filter by address and name
-  List<CoinImage> coinsImages = await walletikaAPI.getCoinsImages([
+  List<CoinImage> coinsImages = await WalletikaAPI.getCoinsImages([
     CoinEntry(symbol: 'BTC'),
     CoinEntry(symbol: 'ETH'),
     CoinEntry(symbol: 'USDT'),
@@ -47,7 +41,7 @@ void main() async {
 
   // Get coin images
   // CoinEntry symbol is required, You can more filter by address and name
-  CoinImage coinImage = await walletikaAPI.getCoinImage(CoinEntry(
+  CoinImage coinImage = await WalletikaAPI.getCoinImage(CoinEntry(
     symbol: 'USDT',
     name: 'Tether',
     contractAddress: '0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
