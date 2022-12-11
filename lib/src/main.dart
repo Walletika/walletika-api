@@ -1,21 +1,36 @@
 import 'dart:io';
 
+import 'package:aescrypto/aescrypto.dart';
 import 'package:coingecko_api/coingecko_result.dart';
 import 'package:coingecko_api/data/coin.dart';
 import 'package:coingecko_api/data/price_info.dart';
+import 'package:path/path.dart' as pathlib;
 
 import 'core/core.dart';
 import 'models.dart';
 
 class WalletikaAPI {
-  static Future<void> init(String key) async {
+  static Future<void> init(
+    String key, {
+    String directory = 'assets',
+  }) async {
     if (coins.isNotEmpty || coinsCache.isNotEmpty) {
       throw Exception("Walltika API already initialized");
     }
 
     cipher.setKey(key);
 
-    await Directory('assets').create();
+    mainDirectory = directory;
+    coinsPath = pathlib.join(mainDirectory, 'coins.json');
+    coinsAESPath = addAESExtension(coinsPath);
+    coinsCachePath = pathlib.join(mainDirectory, 'coins_cache.json');
+    coinsCacheAESPath = addAESExtension(coinsCachePath);
+    coinsListedPath = pathlib.join(mainDirectory, 'coins_listed.json');
+    coinsListedAESPath = addAESExtension(coinsListedPath);
+
+    final Directory dir = Directory(mainDirectory);
+    if (!await dir.exists()) await dir.create();
+
     await fetchCoinsListed();
     await load(update);
   }
