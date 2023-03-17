@@ -10,16 +10,20 @@ import 'core/core.dart';
 import 'models.dart';
 
 class WalletikaAPI {
+  /// Instance initialization is required
   static Future<void> init({
     required String encryptionKey,
     String directory = 'assets',
   }) async {
+    // Only once to initialize
     if (coins.isNotEmpty || coinsCache.isNotEmpty) {
       throw Exception("Walletika API already initialized");
     }
 
+    // Set encryption key
     cipher.setKey(encryptionKey);
 
+    // Set file paths
     mainDirectory = directory;
     coinsPath = pathlib.join(mainDirectory, 'coins.json');
     coinsAESPath = addAESExtension(coinsPath);
@@ -28,13 +32,18 @@ class WalletikaAPI {
     coinsListedPath = pathlib.join(mainDirectory, 'coins_listed.json');
     coinsListedAESPath = addAESExtension(coinsListedPath);
 
+    // Create main folder if not exists
     final Directory dir = Directory(mainDirectory);
     if (!await dir.exists()) await dir.create();
 
+    // Fetch that coins are listed by walletika
     await fetchCoinsListed();
+
+    // Finally, update and load all files
     await load(update);
   }
 
+  /// Ping to check connection
   static Future<bool> isConnected() async {
     return coinGeckoAPI.ping
         .ping()
@@ -42,8 +51,10 @@ class WalletikaAPI {
         .catchError((error) => false);
   }
 
+  /// Set default unknown coin image
   static void setDefaultCoinURLImage(String url) => defaultCoinURLImage = url;
 
+  /// Get some coins prices
   static Future<List<CoinPrice>> getCoinsPrices(
     List<CoinEntry> coins, {
     String vsCurrencies = 'usd',
@@ -69,6 +80,7 @@ class WalletikaAPI {
       double? price;
       double? changeIn24h;
 
+      // Get price and changes in 24h from API
       for (final PriceInfo priceInfo in coinsPrices?.data ?? []) {
         if (priceInfo.id == coin.value) {
           price = priceInfo.getPriceIn(vsCurrencies);
@@ -77,8 +89,8 @@ class WalletikaAPI {
         }
       }
 
+      // Check `CoinsListed`, If it's not available on API
       if (price == null && coin.value == null) {
-        // Check coins listed
         for (final CoinListed coinListed in coinsListed) {
           if (coinListed.contracts.contains(
             coin.key.contractAddress?.toLowerCase(),
@@ -100,6 +112,7 @@ class WalletikaAPI {
     return result;
   }
 
+  /// Get single coin price
   static Future<CoinPrice> getCoinPrice(
     CoinEntry coin, {
     String vsCurrencies = 'usd',
@@ -112,6 +125,7 @@ class WalletikaAPI {
     ).then<CoinPrice>((coins) => coins.first);
   }
 
+  /// Get some coins images
   static Future<List<CoinImage>> getCoinsImages(List<CoinEntry> coins) async {
     final List<CoinImage> result = [];
     final Map<CoinEntry, String?> ids = {
@@ -120,8 +134,10 @@ class WalletikaAPI {
     bool isChanged = false;
 
     for (final MapEntry<CoinEntry, String?> coin in ids.entries) {
+      // Check `coinsCache`
       String? image = coinsCache[coin.value];
 
+      // Get image from API, if it's not available in cache
       if (coin.value != null && image == null) {
         CoinGeckoResult<Coin?>? coinData;
 
@@ -146,8 +162,8 @@ class WalletikaAPI {
         }
       }
 
+      // Check `coinsListed`, if it's not available on API
       if (image == null && coin.value == null) {
-        // Check coins listed
         for (final CoinListed coinListed in coinsListed) {
           if (coinListed.contracts.contains(
             coin.key.contractAddress?.toLowerCase(),
@@ -158,6 +174,7 @@ class WalletikaAPI {
         }
       }
 
+      // Set `defaultCoinURLImage`, if it's not available everywhere
       result.add(CoinImage(
         symbol: coin.key.symbol,
         contractAddress: coin.key.contractAddress,
@@ -170,16 +187,19 @@ class WalletikaAPI {
     return result;
   }
 
+  /// Get single coin image
   static Future<CoinImage> getCoinImage(CoinEntry coin) async {
     return getCoinsImages([coin]).then<CoinImage>((coins) => coins.first);
   }
 
+  /// Update for pulling all coins info from `CoinGeckoAPI`
   static Future<bool> update() async {
     bool isValid = false;
 
     final Map<String, List<dynamic>> coinsData = await pullData(coinGeckoAPI);
 
     if (coinsData.isNotEmpty) {
+      // Dump coins data
       coins.clear();
       coins.addAll(coinsData);
       await cipher.encryptToFile(
@@ -188,6 +208,7 @@ class WalletikaAPI {
         ignoreFileExists: true,
       );
 
+      // Get some coins to be available by default
       coinsCache.clear();
       await getCoinsImages([
         CoinEntry(symbol: 'ETH'),

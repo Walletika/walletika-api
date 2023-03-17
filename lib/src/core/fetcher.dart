@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+/// Fetch json data from API
 Future<List<dynamic>> fetcher(String apiURL) async {
   try {
     final http.Response response = await http.get(Uri.parse(apiURL));

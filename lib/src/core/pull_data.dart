@@ -4,6 +4,7 @@ import 'package:coingecko_api/coingecko_api.dart';
 import 'package:coingecko_api/coingecko_result.dart';
 import 'package:coingecko_api/data/coin_short.dart';
 
+/// Pull all data from `CoinGeckoAPI`
 Future<Map<String, List<Map<String, dynamic>>>> pullData(
   CoinGeckoApi coinGeckoApi,
 ) async {

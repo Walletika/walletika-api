@@ -1,6 +1,7 @@
 import '../models.dart';
 import 'core.dart';
 
+/// Extract coinID from coinEntry to get info from CoinGecko by it
 String? getCoinID(CoinEntry coin) {
   final String symbol = coin.symbol.toUpperCase();
   final String? name = coin.name?.toLowerCase();
