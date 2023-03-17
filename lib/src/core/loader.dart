@@ -4,13 +4,14 @@ import '../models.dart';
 import 'core.dart';
 
 Future<void> fetchCoinsListed() async {
-  coinsListed.addAll(
-    await fetcher(coinsListedAPI).then<Iterable<CoinListed>>((coins) {
-      return coins.map<CoinListed>((coin) => CoinListed.fromJson(coin));
-    }),
-  );
+  final Iterable<CoinListed> data = await fetcher(coinsListedAPI).then((coins) {
+    return coins.map<CoinListed>((coin) => CoinListed.fromJson(coin));
+  });
 
-  if (coinsListed.isNotEmpty) {
+  if (data.isNotEmpty) {
+    coinsListed.clear();
+    coinsListed.addAll(data);
+
     await cipher.encryptToFile(
       data: jsonEncodeToBytes(
         coinsListed.map((coin) => coin.toJson()).toList(),
