@@ -10,15 +10,15 @@ import 'core/core.dart';
 import 'models.dart';
 
 class WalletikaAPI {
-  static Future<void> init(
-    String key, {
+  static Future<void> init({
+    required String encryptionKey,
     String directory = 'assets',
   }) async {
     if (coins.isNotEmpty || coinsCache.isNotEmpty) {
-      throw Exception("Walltika API already initialized");
+      throw Exception("Walletika API already initialized");
     }
 
-    cipher.setKey(key);
+    cipher.setKey(encryptionKey);
 
     mainDirectory = directory;
     coinsPath = pathlib.join(mainDirectory, 'coins.json');

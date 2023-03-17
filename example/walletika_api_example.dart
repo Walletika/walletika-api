@@ -2,7 +2,7 @@ import 'package:walletika_api/walletika_api.dart';
 
 void main() async {
   // WalletikaAPI initialize
-  await WalletikaAPI.init('key');
+  await WalletikaAPI.init(encryptionKey: 'key');
 
   // Download latest update from CoinGecko
   await WalletikaAPI.update();
@@ -10,7 +10,7 @@ void main() async {
   // Check connection
   await WalletikaAPI.isConnected();
 
-  // Set defailt coin image if not found
+  // Set default coin image if not found
   WalletikaAPI.setDefaultCoinURLImage(
     'https://etherscan.io/images/main/empty-token.png',
   );

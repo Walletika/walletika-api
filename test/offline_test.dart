@@ -15,7 +15,7 @@ void main() async {
 
   group('Walletika API Offline Group:', () {
     test('Test (init)', () async {
-      await WalletikaAPI.init('123456');
+      await WalletikaAPI.init(encryptionKey: '123456');
       bool isConnected = await WalletikaAPI.isConnected();
 
       printDebug("""
@@ -90,7 +90,7 @@ changeIn24h: ${coin.changeIn24h}
     test('Test (getCoinPrice) USDT by wrong name', () async {
       CoinPrice coin = await WalletikaAPI.getCoinPrice(CoinEntry(
         symbol: 'USDT',
-        name: 'Anyname',
+        name: 'AnyName',
       ));
 
       printDebug("""
@@ -189,7 +189,7 @@ imageURL: ${coin.imageURL}
     test('Test (getCoinImage) USDT by wrong name', () async {
       CoinImage coin = await WalletikaAPI.getCoinImage(CoinEntry(
         symbol: 'USDT',
-        name: 'Anyname',
+        name: 'AnyName',
       ));
 
       printDebug("""

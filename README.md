@@ -16,7 +16,7 @@ await WalletikaAPI.update();
 // Check connection
 await WalletikaAPI.isConnected();
 
-// Set defailt coin image if not found
+// Set default coin image if not found
 WalletikaAPI.setDefaultCoinURLImage(
   'https://etherscan.io/images/main/empty-token.png',
 );
