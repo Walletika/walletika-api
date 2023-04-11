@@ -10,12 +10,14 @@ void printDebug(String message) {
 }
 
 void main() async {
+  String api =
+      'https://raw.githubusercontent.com/Walletika/metadata/main/coins_listed.json';
   const String wtkImage =
       'https://raw.githubusercontent.com/Walletika/metadata/main/coins/walletika.png';
 
   group('Walletika API Offline Data Group:', () {
     test('Test (init)', () async {
-      await WalletikaAPI.init(encryptionKey: '123456');
+      await WalletikaAPI.init(encryptionKey: '123456', coinsListedAPI: api);
       bool isConnected = await WalletikaAPI.isConnected();
 
       printDebug("""
@@ -39,7 +41,8 @@ isConnected: $isConnected
       for (int i = 0; i < coins.length; i++) {
         CoinPrice coin = coins[i];
 
-        printDebug("""
+        printDebug(
+            """
 symbol: ${coin.symbol}
 price: ${coin.price}
 changeIn24h: ${coin.changeIn24h}
@@ -57,7 +60,8 @@ changeIn24h: ${coin.changeIn24h}
         name: 'Tether',
       ));
 
-      printDebug("""
+      printDebug(
+          """
 symbol: ${coin.symbol}
 price: ${coin.price}
 changeIn24h: ${coin.changeIn24h}
@@ -76,7 +80,8 @@ changeIn24h: ${coin.changeIn24h}
             '0xc2132d05d31c914a87c6611c10748aeb04b58e8f', // polygon network,
       ));
 
-      printDebug("""
+      printDebug(
+          """
 symbol: ${coin.symbol}
 price: ${coin.price}
 changeIn24h: ${coin.changeIn24h}
@@ -93,7 +98,8 @@ changeIn24h: ${coin.changeIn24h}
         name: 'AnyName',
       ));
 
-      printDebug("""
+      printDebug(
+          """
 symbol: ${coin.symbol}
 price: ${coin.price}
 changeIn24h: ${coin.changeIn24h}
@@ -111,7 +117,8 @@ changeIn24h: ${coin.changeIn24h}
         contractAddress: '0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87',
       ));
 
-      printDebug("""
+      printDebug(
+          """
 symbol: ${coin.symbol}
 price: ${coin.price}
 changeIn24h: ${coin.changeIn24h}
