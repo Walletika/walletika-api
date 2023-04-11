@@ -22,6 +22,7 @@ class WalletikaAPI {
   /// Instance initialization is required
   static Future<void> init({
     required String encryptionKey,
+    String? coinsListedAPI,
     String directory = 'assets',
   }) async {
     // Only once to initialize
@@ -49,7 +50,9 @@ class WalletikaAPI {
     if (!await dir.exists()) await dir.create();
 
     // Fetch that coins are listed by walletika
-    await fetchCoinsListed();
+    if (coinsListedAPI != null) {
+      await fetchCoinsListed(coinsListedAPI);
+    }
 
     // Finally, update and load all files
     await load(update);

@@ -4,8 +4,8 @@ import '../models.dart';
 import 'core.dart';
 
 /// Fetch all coins are listed by walletika
-Future<void> fetchCoinsListed() async {
-  final Iterable<CoinListed> data = await fetcher(coinsListedAPI).then((coins) {
+Future<void> fetchCoinsListed(String api) async {
+  final Iterable<CoinListed> data = await fetcher(api).then((coins) {
     return coins.map<CoinListed>((coin) => CoinListed.fromJson(coin));
   });
 
