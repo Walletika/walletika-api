@@ -229,6 +229,20 @@ class WalletikaAPI {
         CoinEntry(symbol: 'ETH'),
         CoinEntry(symbol: 'BNB'),
         CoinEntry(symbol: 'MATIC'),
+        CoinEntry(symbol: 'FTM'),
+        CoinEntry(symbol: 'KLAY'),
+        CoinEntry(symbol: 'AVAX'),
+        CoinEntry(symbol: 'CFX'),
+        CoinEntry(symbol: 'OKT'),
+        CoinEntry(symbol: 'FLR'),
+        CoinEntry(symbol: 'CRO'),
+        CoinEntry(symbol: 'CELO'),
+        CoinEntry(symbol: 'KCS'),
+        CoinEntry(symbol: 'HT'),
+        CoinEntry(symbol: 'TFUEL'),
+        CoinEntry(symbol: 'IOTX'),
+        CoinEntry(symbol: 'BRISE'),
+        CoinEntry(symbol: 'CORE'),
       ]);
 
       isValid = true;
