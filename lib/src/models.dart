@@ -67,3 +67,35 @@ class CoinListed {
         "image": imageURL,
       };
 }
+
+class FetchResult {
+  final String? appChecksum;
+  final List<Map<String, dynamic>>? defaultNetworks;
+  final List<Map<String, dynamic>>? defaultTokens;
+  final List<Map<String, dynamic>>? coinsListed;
+  final List<Map<String, dynamic>>? stakeContracts;
+
+  FetchResult({
+    this.appChecksum,
+    this.defaultNetworks,
+    this.defaultTokens,
+    this.coinsListed,
+    this.stakeContracts,
+  });
+
+  factory FetchResult.fromJson(Map<String, dynamic> json) => FetchResult(
+        appChecksum: json["appChecksum"],
+        defaultNetworks: json["defaultNetworks"]?.cast<Map<String, dynamic>>(),
+        defaultTokens: json["defaultTokens"]?.cast<Map<String, dynamic>>(),
+        coinsListed: json["coinsListed"]?.cast<Map<String, dynamic>>(),
+        stakeContracts: json["stakeContracts"]?.cast<Map<String, dynamic>>(),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "appChecksum": appChecksum,
+        "defaultNetworks": defaultNetworks,
+        "defaultTokens": defaultTokens,
+        "coinsListed": coinsListed,
+        "stakeContracts": stakeContracts,
+      };
+}
