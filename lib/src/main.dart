@@ -257,27 +257,16 @@ class WalletikaAPI {
         ignoreFileExists: true,
       );
 
-      // Get some coins to be available by default
+      // Reset coins cache
       coinsCache.clear();
-      await getCoinsImages([
-        CoinEntry(symbol: 'ETH'),
-        CoinEntry(symbol: 'BNB'),
-        CoinEntry(symbol: 'MATIC'),
-        CoinEntry(symbol: 'FTM'),
-        CoinEntry(symbol: 'KLAY'),
-        CoinEntry(symbol: 'AVAX'),
-        CoinEntry(symbol: 'CFX'),
-        CoinEntry(symbol: 'OKT'),
-        CoinEntry(symbol: 'FLR'),
-        CoinEntry(symbol: 'CRO'),
-        CoinEntry(symbol: 'CELO'),
-        CoinEntry(symbol: 'KCS'),
-        CoinEntry(symbol: 'HT'),
-        CoinEntry(symbol: 'TFUEL'),
-        CoinEntry(symbol: 'IOTX'),
-        CoinEntry(symbol: 'BRISE'),
-        CoinEntry(symbol: 'CORE'),
-      ]);
+
+      // Get some coins to be available by default
+      if (_fetchResult.defaultNetworks?.isNotEmpty == true) {
+        await getCoinsImages([
+          for (final Map<String, dynamic> i in _fetchResult.defaultNetworks!)
+            CoinEntry(symbol: i['symbol']),
+        ]);
+      }
 
       isValid = true;
     }
