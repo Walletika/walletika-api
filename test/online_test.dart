@@ -12,7 +12,7 @@ void printDebug(String message) {
 
 void main() async {
   const String api =
-      'https://github.com/Walletika/metadata/raw/main/app_info_test.json';
+      'https://raw.githubusercontent.com/Walletika/metadata/main/app_info_encrypted_test.json';
   const String wtkImage =
       'https://raw.githubusercontent.com/Walletika/metadata/main/coins/walletika.png';
 
@@ -26,7 +26,11 @@ void main() async {
     });
 
     test('Test (init)', () async {
-      await WalletikaAPI.init(encryptionKey: '123456', apiURL: api);
+      await WalletikaAPI.init(
+        encryptionKey: '123456',
+        apiURL: api,
+        apiDecryptionKey: 'key',
+      );
       bool isConnected = await WalletikaAPI.isConnected();
 
       printDebug("""
