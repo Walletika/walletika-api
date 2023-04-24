@@ -10,12 +10,12 @@ void printDebug(String message) {
 }
 
 void main() async {
-  String api =
-      'https://raw.githubusercontent.com/Walletika/metadata/main/coins_listed.json';
+  const String api =
+      'https://github.com/Walletika/metadata/raw/main/app_info_test.json';
 
   group('Walletika API Offline Group:', () {
     test('Test (init)', () async {
-      await WalletikaAPI.init(encryptionKey: '123456', coinsListedAPI: api);
+      await WalletikaAPI.init(encryptionKey: '123456', apiURL: api);
       bool isConnected = await WalletikaAPI.isConnected();
 
       printDebug("""
@@ -26,6 +26,59 @@ isConnected: $isConnected
       expect(File(coinsAESPath).existsSync(), isFalse);
       expect(File(coinsCacheAESPath).existsSync(), isFalse);
       expect(File(coinsListedAESPath).existsSync(), isFalse);
+    });
+
+    test('Test (getAppChecksum)', () async {
+      String? appChecksum = WalletikaAPI.getAppChecksum();
+
+      printDebug("""
+appChecksum: $appChecksum
+""");
+
+      expect(appChecksum, isNull);
+    });
+
+    test('Test (getDefaultNetworks)', () async {
+      List<Map<String, dynamic>>? defaultNetworks =
+          WalletikaAPI.getDefaultNetworks();
+
+      printDebug("""
+defaultNetworks: $defaultNetworks
+""");
+
+      expect(defaultNetworks, isNull);
+    });
+
+    test('Test (getDefaultTokens)', () async {
+      List<Map<String, dynamic>>? defaultTokens =
+          WalletikaAPI.getDefaultTokens();
+
+      printDebug("""
+defaultTokens: $defaultTokens
+""");
+
+      expect(defaultTokens, isNull);
+    });
+
+    test('Test (getCoinsListed)', () async {
+      List<Map<String, dynamic>>? coinsListed = WalletikaAPI.getCoinsListed();
+
+      printDebug("""
+coinsListed: $coinsListed
+""");
+
+      expect(coinsListed, isNull);
+    });
+
+    test('Test (getStakeContracts)', () async {
+      List<Map<String, dynamic>>? stakeContracts =
+          WalletikaAPI.getStakeContracts();
+
+      printDebug("""
+stakeContracts: $stakeContracts
+""");
+
+      expect(stakeContracts, isNull);
     });
   });
 

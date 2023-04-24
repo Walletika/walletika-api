@@ -1,0 +1,256 @@
+{
+    "appChecksum": "93ec39012c1f62c8fd1d0e664d296c8fc0ee9dd0d76e58790c0fe27b030056a9",
+    "defaultNetworks": [
+        {
+            "rpc": "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            "name": "Ethereum Mainnet",
+            "chainID": 1,
+            "symbol": "ETH",
+            "explorer": "https://etherscan.io"
+          },
+          {
+            "rpc": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            "name": "Goerli ( Testnet )",
+            "chainID": 5,
+            "symbol": "ETH",
+            "explorer": "https://goerli.etherscan.io"
+          },
+          {
+            "rpc": "https://sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            "name": "Sepolia ( Testnet )",
+            "chainID": 11155111,
+            "symbol": "ETH",
+            "explorer": "https://sepolia.etherscan.io"
+          },
+          {
+            "rpc": "https://bsc-dataseed1.binance.org",
+            "name": "BNB Smart Chain Mainnet",
+            "chainID": 56,
+            "symbol": "BNB",
+            "explorer": "https://bscscan.com"
+          },
+          {
+            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "name": "BNB Smart Chain ( Testnet )",
+            "chainID": 97,
+            "symbol": "BNB",
+            "explorer": "https://testnet.bscscan.com"
+          },
+          {
+            "rpc": "https://polygon-rpc.com",
+            "name": "Polygon Mainnet",
+            "chainID": 137,
+            "symbol": "MATIC",
+            "explorer": "https://polygonscan.com"
+          },
+          {
+            "rpc": "https://matic-mumbai.chainstacklabs.com",
+            "name": "Polygon Mumbai ( Testnet )",
+            "chainID": 80001,
+            "symbol": "MATIC",
+            "explorer": "https://mumbai.polygonscan.com"
+          },
+          {
+            "rpc": "https://arb1.arbitrum.io/rpc",
+            "name": "Arbitrum One Mainnet",
+            "chainID": 42161,
+            "symbol": "ETH",
+            "explorer": "https://arbiscan.io"
+          },
+          {
+            "rpc": "https://nova.arbitrum.io/rpc",
+            "name": "Arbitrum Nova Mainnet",
+            "chainID": 42170,
+            "symbol": "ETH",
+            "explorer": "https://nova.arbiscan.io"
+          },
+          {
+            "rpc": "https://goerli-rollup.arbitrum.io/rpc",
+            "name": "Arbitrum Goerli ( Testnet )",
+            "chainID": 421613,
+            "symbol": "ETH",
+            "explorer": "https://goerli.arbiscan.io"
+          },
+          {
+            "rpc": "https://rpcapi.fantom.network",
+            "name": "Fantom Opera Mainnet",
+            "chainID": 250,
+            "symbol": "FTM",
+            "explorer": "https://ftmscan.com"
+          },
+          {
+            "rpc": "https://mainnet.optimism.io",
+            "name": "Optimistic Ethereum Mainnet",
+            "chainID": 10,
+            "symbol": "ETH",
+            "explorer": "https://optimistic.etherscan.io"
+          },
+          {
+            "rpc": "https://public-en-cypress.klaytn.net",
+            "name": "Klaytn Cypress Mainnet",
+            "chainID": 8217,
+            "symbol": "KLAY",
+            "explorer": "https://scope.klaytn.com"
+          },
+          {
+            "rpc": "https://api.avax.network/ext/bc/C/rpc",
+            "name": "Avalanche Mainnet",
+            "chainID": 43114,
+            "symbol": "AVAX",
+            "explorer": "https://snowtrace.io"
+          },
+          {
+            "rpc": "https://evm.confluxrpc.com",
+            "name": "Conflux eSpace Mainnet",
+            "chainID": 1030,
+            "symbol": "CFX",
+            "explorer": "https://evm.confluxscan.net"
+          },
+          {
+            "rpc": "https://exchainrpc.okex.org",
+            "name": "OKExChain Mainnet",
+            "chainID": 66,
+            "symbol": "OKT",
+            "explorer": "https://www.oklink.com/okexchain"
+          },
+          {
+            "rpc": "https://flare-api.flare.network/ext/C/rpc",
+            "name": "Flare Mainnet",
+            "chainID": 14,
+            "symbol": "FLR",
+            "explorer": "https://flare-explorer.flare.network"
+          },
+          {
+            "rpc": "https://evm.cronos.org",
+            "name": "Cronos Mainnet",
+            "chainID": 25,
+            "symbol": "CRO",
+            "explorer": "https://cronoscan.com"
+          },
+          {
+            "rpc": "https://forno.celo.org",
+            "name": "Celo Mainnet",
+            "chainID": 42220,
+            "symbol": "CELO",
+            "explorer": "https://celoscan.io"
+          },
+          {
+            "rpc": "https://rpc-mainnet.kcc.network",
+            "name": "KCC Mainnet",
+            "chainID": 321,
+            "symbol": "KCS",
+            "explorer": "https://explorer.kcc.io"
+          },
+          {
+            "rpc": "https://http-mainnet.hecochain.com",
+            "name": "Heco Mainnet",
+            "chainID": 128,
+            "symbol": "HT",
+            "explorer": "https://hecoinfo.com"
+          },
+          {
+            "rpc": "https://eth-rpc-api.thetatoken.org/rpc",
+            "name": "Theta Mainnet",
+            "chainID": 361,
+            "symbol": "TFUEL",
+            "explorer": "https://explorer.thetatoken.org"
+          },
+          {
+            "rpc": "https://babel-api.mainnet.iotex.io",
+            "name": "IoTeX Mainnet",
+            "chainID": 4689,
+            "symbol": "IOTX",
+            "explorer": "https://iotexscan.io"
+          },
+          {
+            "rpc": "https://mainnet-rpc.brisescan.com",
+            "name": "Brise Mainnet",
+            "chainID": 32520,
+            "symbol": "BRISE",
+            "explorer": "https://brisescan.com"
+          },
+          {
+            "rpc": "https://rpc.coredao.org",
+            "name": "CORE Mainnet",
+            "chainID": 1116,
+            "symbol": "CORE",
+            "explorer": "https://scan.coredao.org"
+          }
+    ],
+    "defaultTokens": [
+        {
+            "rpc": "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            "contract": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "website": "https://tether.to"
+        },
+        {
+            "rpc": "https://bsc-dataseed1.binance.org",
+            "contract": "0x55d398326f99059fF775485246999027B3197955",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 18,
+            "website": "https://tether.to"
+        },
+        {
+            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "contract": "0x8cA86F6eE71Ee4B951279711341F051195B188F8",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "website": "https://walletika.com"
+        },
+        {
+            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
+            "name": "Walletika",
+            "symbol": "WTK",
+            "decimals": 18,
+            "website": "https://walletika.com"
+        }
+    ],
+    "coinsListed": [
+        {
+
+            "name": "Walletika",
+            "symbol": "WTK",
+            "contracts": ["0xc4d3716b65b9c4c6b69e4e260b37e0e476e28d87"],
+            "price": 0.02,
+            "image": "https://raw.githubusercontent.com/Walletika/metadata/main/coins/walletika.png"
+        },
+        {
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "contracts": ["0x8ca86f6ee71ee4b951279711341f051195b188f8"],
+            "price": 1.0,
+            "image": "https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663"
+        }
+    ],
+    "stakeContracts": [
+        {
+            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "contract": "0xbfAa034b854703f31B34eCC1c68C356feeb19268",
+            "startBlock": 23545120,
+            "endBlock": 128636320,
+            "startTime": 1665306000000,
+            "endTime": 1980925200000,
+            "stakeToken": {
+                "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
+                "name": "Walletika",
+                "symbol": "WTK",
+                "decimals": 18,
+                "website": "https://walletika.com"
+            },
+            "rewardToken": {
+                "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
+                "name": "Walletika",
+                "symbol": "WTK",
+                "decimals": 18,
+                "website": "https://walletika.com"
+            },
+            "isLocked": false
+        }
+    ]
+}
