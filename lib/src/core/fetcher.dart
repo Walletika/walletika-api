@@ -26,7 +26,7 @@ Future<FetchResult> fetcher({
     final AESCrypto cipher = AESCrypto(key: decryptionKey);
     result = jsonDecode(
       await cipher.decryptText(
-        bytes: Uint8List.fromList(result['data']!.cast<List<int>>()),
+        bytes: Uint8List.fromList((result['data'] as List).cast<int>()),
         hasKey: true,
       ),
     );
