@@ -3,24 +3,20 @@ import 'dart:io';
 import '../models.dart';
 import 'core.dart';
 
-/// Fetch all coins are listed by walletika
-Future<void> fetchCoinsListed(String api) async {
-  final Iterable<CoinListed> data = await fetcher(api).then((coins) {
-    return coins.map<CoinListed>((coin) => CoinListed.fromJson(coin));
-  });
+/// Load all coins are listed
+Future<void> coinsListedLoader(List<Map<String, dynamic>>? data) async {
+  if (data == null || data.isEmpty) return;
 
-  if (data.isNotEmpty) {
-    coinsListed.clear();
-    coinsListed.addAll(data);
-
-    await cipher.encryptToFile(
-      data: jsonEncodeToBytes(
-        coinsListed.map((coin) => coin.toJson()).toList(),
-      ),
-      path: coinsListedPath,
-      ignoreFileExists: true,
-    );
+  coinsListed.clear();
+  for (final Map<String, dynamic> coin in data) {
+    coinsListed.add(CoinListed.fromJson(coin));
   }
+
+  await cipher.encryptToFile(
+    data: jsonEncodeToBytes(data),
+    path: coinsListedPath,
+    ignoreFileExists: true,
+  );
 }
 
 /// Load all stored data

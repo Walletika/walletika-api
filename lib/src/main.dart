@@ -19,10 +19,13 @@ class _MyHttpOverrides extends HttpOverrides {
 }
 
 class WalletikaAPI {
+  static late FetchResult _fetchResult;
+
   /// Instance initialization is required
   static Future<void> init({
     required String encryptionKey,
-    String? coinsListedAPI,
+    required String apiURL,
+    String? apiDecryptionKey,
     String directory = 'assets',
   }) async {
     // Only once to initialize
@@ -49,13 +52,42 @@ class WalletikaAPI {
     final Directory dir = Directory(mainDirectory);
     if (!await dir.exists()) await dir.create();
 
-    // Fetch that coins are listed by walletika
-    if (coinsListedAPI != null) {
-      await fetchCoinsListed(coinsListedAPI);
-    }
+    // Fetch data from API
+    _fetchResult = await fetcher(
+      apiURL: apiURL,
+      decryptionKey: apiDecryptionKey,
+    );
+
+    // Load that coins are listed
+    await coinsListedLoader(_fetchResult.coinsListed);
 
     // Finally, update and load all files
     await load(update);
+  }
+
+  /// Get application checksum from API
+  static String? getAppChecksum() {
+    return _fetchResult.appChecksum;
+  }
+
+  /// Get default networks from API
+  static List<Map<String, dynamic>>? getDefaultNetworks() {
+    return _fetchResult.defaultNetworks;
+  }
+
+  /// Get default tokens from API
+  static List<Map<String, dynamic>>? getDefaultTokens() {
+    return _fetchResult.defaultTokens;
+  }
+
+  /// Get coins are listed from API
+  static List<Map<String, dynamic>>? getCoinsListed() {
+    return _fetchResult.coinsListed;
+  }
+
+  /// Get stake contracts from API
+  static List<Map<String, dynamic>>? getStakeContracts() {
+    return _fetchResult.stakeContracts;
   }
 
   /// Ping to check connection
@@ -67,7 +99,9 @@ class WalletikaAPI {
   }
 
   /// Set default unknown coin image
-  static void setDefaultCoinURLImage(String url) => defaultCoinURLImage = url;
+  static void setDefaultCoinURLImage(String url) {
+    defaultCoinURLImage = url;
+  }
 
   /// Get some coins prices
   static Future<List<CoinPrice>> getCoinsPrices(
