@@ -2,7 +2,10 @@ import 'package:walletika_api/walletika_api.dart';
 
 void main() async {
   // WalletikaAPI initialize
-  await WalletikaAPI.init(encryptionKey: 'key');
+  await WalletikaAPI.init(
+    encryptionKey: 'key',
+    apiURL: 'https://github.com/Walletika/metadata/raw/main/app_info_test.json',
+  );
 
   // Download latest update from CoinGecko
   await WalletikaAPI.update();
