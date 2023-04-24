@@ -15,7 +15,7 @@ void main() async {
 
   group('Walletika API Offline Group:', () {
     test('Test (init)', () async {
-      await WalletikaAPI.init(encryptionKey: '123456', apiURL: api);
+      await WalletikaAPI.init(encryptionKey: 'key', apiURL: api);
       bool isConnected = await WalletikaAPI.isConnected();
 
       printDebug("""

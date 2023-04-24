@@ -27,7 +27,7 @@ void main() async {
 
     test('Test (init)', () async {
       await WalletikaAPI.init(
-        encryptionKey: '123456',
+        encryptionKey: 'key',
         apiURL: api,
         apiDecryptionKey: 'key',
       );
