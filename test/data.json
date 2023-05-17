@@ -30,7 +30,7 @@
             "explorer": "https://bscscan.com"
           },
           {
-            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
             "name": "BNB Smart Chain ( Testnet )",
             "chainID": 97,
             "symbol": "BNB",
@@ -195,7 +195,7 @@
             "website": "https://tether.to"
         },
         {
-            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
             "contract": "0x8cA86F6eE71Ee4B951279711341F051195B188F8",
             "name": "Tether USD",
             "symbol": "USDT",
@@ -203,7 +203,7 @@
             "website": "https://walletika.com"
         },
         {
-            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
             "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
             "name": "Walletika",
             "symbol": "WTK",
@@ -230,7 +230,7 @@
     ],
     "stakeContracts": [
         {
-            "rpc": "https://data-seed-prebsc-1-s3.binance.org:8545",
+            "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
             "contract": "0xbfAa034b854703f31B34eCC1c68C356feeb19268",
             "startBlock": 23545120,
             "endBlock": 128636320,
