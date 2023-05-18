@@ -55,21 +55,24 @@
             "name": "Arbitrum One Mainnet",
             "chainID": 42161,
             "symbol": "ETH",
-            "explorer": "https://arbiscan.io"
+            "explorer": "https://arbiscan.io",
+            "image": "https://raw.githubusercontent.com/Walletika/metadata/main/coins/AO_logomark.png"
           },
           {
             "rpc": "https://nova.arbitrum.io/rpc",
             "name": "Arbitrum Nova Mainnet",
             "chainID": 42170,
             "symbol": "ETH",
-            "explorer": "https://nova.arbiscan.io"
+            "explorer": "https://nova.arbiscan.io",
+            "image": "https://raw.githubusercontent.com/Walletika/metadata/main/coins/AN_logomark.png"
           },
           {
             "rpc": "https://goerli-rollup.arbitrum.io/rpc",
             "name": "Arbitrum Goerli ( Testnet )",
             "chainID": 421613,
             "symbol": "ETH",
-            "explorer": "https://goerli.arbiscan.io"
+            "explorer": "https://goerli.arbiscan.io",
+            "image": "https://raw.githubusercontent.com/Walletika/metadata/main/coins/AO_logomark.png"
           },
           {
             "rpc": "https://rpcapi.fantom.network",
@@ -83,7 +86,8 @@
             "name": "Optimistic Ethereum Mainnet",
             "chainID": 10,
             "symbol": "ETH",
-            "explorer": "https://optimistic.etherscan.io"
+            "explorer": "https://optimistic.etherscan.io",
+            "image": "https://raw.githubusercontent.com/Walletika/metadata/main/coins/Optimistic_Ethereum_logo.png"
           },
           {
             "rpc": "https://public-en-cypress.klaytn.net",
@@ -183,32 +187,28 @@
             "contract": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
             "name": "Tether USD",
             "symbol": "USDT",
-            "decimals": 6,
-            "website": "https://tether.to"
+            "decimals": 6
         },
         {
             "rpc": "https://bsc-dataseed1.binance.org",
             "contract": "0x55d398326f99059fF775485246999027B3197955",
             "name": "Tether USD",
             "symbol": "USDT",
-            "decimals": 18,
-            "website": "https://tether.to"
+            "decimals": 18
         },
         {
             "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
             "contract": "0x8cA86F6eE71Ee4B951279711341F051195B188F8",
             "name": "Tether USD",
             "symbol": "USDT",
-            "decimals": 6,
-            "website": "https://walletika.com"
+            "decimals": 6
         },
         {
             "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
             "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
             "name": "Walletika",
             "symbol": "WTK",
-            "decimals": 18,
-            "website": "https://walletika.com"
+            "decimals": 18
         }
     ],
     "coinsListed": [
