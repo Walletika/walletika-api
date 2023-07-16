@@ -13,11 +13,12 @@ platforms:
 publish_to: none
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=2.18.0 <4.0.0'
 
+# Add regular dependencies here.
 dependencies:
-  http: ^0.13.5
-  path: ^1.8.2
+  http: ^1.1.0
+  path: ^1.8.3
   coingecko_api: 1.1.1+1
   aescrypto:
     git:
