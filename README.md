@@ -10,41 +10,36 @@ import 'package:walletika_api/walletika_api.dart';
 // WalletikaAPI initialize
 await WalletikaAPI.init(
   encryptionKey: 'key',
-  apiURL: 'https://github.com/Walletika/metadata/raw/main/app_info_test.json',
+  apiURL: 'https://raw.githubusercontent.com/Walletika/walletika-api/main/test/data.json',
 );
 
-// Download latest update from CoinGecko
+// Download latest update from CoinGecko, it will call automatically with initialization
 await WalletikaAPI.update();
 
-// Check connection
+// Check the internet connection
 await WalletikaAPI.isConnected();
 
-// Get application checksum from API
-String? appChecksum = WalletikaAPI.getAppChecksum();
+// Get application version from API
+String? version = WalletikaAPI.version;
 
-// Get default networks from API
-List<Map<String, dynamic>>? defaultNetworks = WalletikaAPI.getDefaultNetworks();
+// Get listed networks from API
+List<Map<String, dynamic>>? listedNetworks = WalletikaAPI.listedNetworks;
 
-// Get default tokens from API
-List<Map<String, dynamic>>? defaultTokens = WalletikaAPI.getDefaultTokens();
+// Get listed coins from API
+List<Map<String, dynamic>>? listedCoins = WalletikaAPI.listedCoins;
 
-// Get coins are listed from API
-List<Map<String, dynamic>>? coinsListed = WalletikaAPI.getCoinsListed();
+// Get offline coins from API
+List<Map<String, dynamic>>? offlineCoins = WalletikaAPI.offlineCoins;
 
-// Get stake contracts from API
-List<Map<String, dynamic>>? stakeContracts = WalletikaAPI.getStakeContracts();
-
-// Set default coin image if not found
-WalletikaAPI.setDefaultCoinURLImage(
-  'https://etherscan.io/images/main/empty-token.png',
-);
+// Get listed stakes from API
+List<Map<String, dynamic>>? listedStakes = WalletikaAPI.listedStakes;
 ```
 
 ### Use `getCoinPrice` function to get coin price
 ```dart
 import 'package:walletika_api/walletika_api.dart';
 
-// Get coin price
+// Get list of coins prices
 // CoinEntry symbol is required, You can more filter by address and name
 CoinPrice coinPrice = await WalletikaAPI.getCoinPrice(CoinEntry(
   symbol: 'USDT',
@@ -53,15 +48,15 @@ CoinPrice coinPrice = await WalletikaAPI.getCoinPrice(CoinEntry(
 ));
 // Coin details
 String symbol = coin.symbol;
-double price = coin.price;
-double changeIn24h = coin.changeIn24h;
+double? price = coin.price;
+double? changeIn24h = coin.changeIn24h;
 ```
 
 ### Use `getCoinImage` function to get coin image
 ```dart
 import 'package:walletika_api/walletika_api.dart';
 
-// Get coin images
+// Get list of coins images
 // CoinEntry symbol is required, You can more filter by address and name
 CoinImage coinImage = await WalletikaAPI.getCoinImage(CoinEntry(
   symbol: 'USDT',
@@ -70,5 +65,5 @@ CoinImage coinImage = await WalletikaAPI.getCoinImage(CoinEntry(
 ));
 // Coin details
 String symbol = coin.symbol;
-String image = coin.imageURL;
+String? image = coin.imageURL;
 ```
