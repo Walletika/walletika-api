@@ -4,19 +4,15 @@ void main() async {
   // WalletikaAPI initialize
   await WalletikaAPI.init(
     encryptionKey: 'key',
-    apiURL: 'https://github.com/Walletika/metadata/raw/main/app_info_test.json',
+    apiURL:
+        'https://raw.githubusercontent.com/Walletika/walletika-api/main/test/data.json',
   );
 
-  // Download latest update from CoinGecko
+  // Download latest update from CoinGecko, it will call automatically with initialization
   await WalletikaAPI.update();
 
-  // Check connection
+  // Check the internet connection
   await WalletikaAPI.isConnected();
-
-  // Set default coin image if not found
-  WalletikaAPI.setDefaultCoinURLImage(
-    'https://etherscan.io/images/main/empty-token.png',
-  );
 
   // Get list of coins prices
   // CoinEntry symbol is required, You can more filter by address and name
