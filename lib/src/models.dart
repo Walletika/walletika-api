@@ -1,3 +1,5 @@
+import 'core/core.dart';
+
 class CoinEntry {
   final String symbol;
   final String? name;
@@ -8,42 +10,74 @@ class CoinEntry {
     this.name,
     this.contractAddress,
   });
+
+  String? get id => getCoinID(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (other is CoinEntry) {
+      return symbol == other.symbol &&
+          name == other.name &&
+          contractAddress == other.contractAddress;
+    }
+
+    return false;
+  }
+
+  @override
+  String toString() {
+    return "CoinImage(id: $id, symbol: $symbol, contractAddress: $contractAddress, name: $name)";
+  }
 }
 
 class CoinPrice {
+  final String? id;
   final String symbol;
   final String? contractAddress;
   final double? price;
   final double? changeIn24h;
 
   CoinPrice({
+    required this.id,
     required this.symbol,
     this.contractAddress,
     this.price,
     this.changeIn24h,
   });
+
+  @override
+  String toString() {
+    return "CoinPrice(id: $id, symbol: $symbol, contractAddress: $contractAddress, price: $price, changeIn24h: $changeIn24h)";
+  }
 }
 
 class CoinImage {
+  final String? id;
   final String symbol;
   final String? contractAddress;
-  final String imageURL;
+  final String? imageURL;
 
   CoinImage({
+    required this.id,
     required this.symbol,
     this.contractAddress,
-    required this.imageURL,
+    this.imageURL,
   });
+
+  @override
+  String toString() {
+    return "CoinImage(id: $id, symbol: $symbol, contractAddress: $contractAddress, imageURL: $imageURL)";
+  }
 }
 
-class CoinListed {
+class OfflineCoin {
   final String name;
   final String symbol;
-  final List<dynamic> contracts;
+  final List<String> contracts;
   final double price;
   final String imageURL;
 
-  CoinListed({
+  OfflineCoin({
     required this.name,
     required this.symbol,
     required this.contracts,
@@ -51,51 +85,51 @@ class CoinListed {
     required this.imageURL,
   });
 
-  factory CoinListed.fromJson(Map<String, dynamic> json) => CoinListed(
-        name: json["name"],
-        symbol: json["symbol"],
-        contracts: json["contracts"],
-        price: json["price"],
-        imageURL: json["image"],
+  factory OfflineCoin.fromJson(Map<String, dynamic> json) => OfflineCoin(
+        name: json[EKey.name],
+        symbol: json[EKey.symbol],
+        contracts: json[EKey.contracts].cast<String>(),
+        price: json[EKey.price],
+        imageURL: json[EKey.image],
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "symbol": symbol,
-        "contracts": contracts,
-        "price": price,
-        "image": imageURL,
+        EKey.name: name,
+        EKey.symbol: symbol,
+        EKey.contracts: contracts,
+        EKey.price: price,
+        EKey.image: imageURL,
       };
 }
 
 class FetchResult {
-  final String? appChecksum;
-  final List<Map<String, dynamic>>? defaultNetworks;
-  final List<Map<String, dynamic>>? defaultTokens;
-  final List<Map<String, dynamic>>? coinsListed;
-  final List<Map<String, dynamic>>? stakeContracts;
+  final String? version;
+  final List<Map<String, dynamic>>? listedNetworks;
+  final List<Map<String, dynamic>>? listedCoins;
+  final List<Map<String, dynamic>>? offlineCoins;
+  final List<Map<String, dynamic>>? listedStakes;
 
   FetchResult({
-    this.appChecksum,
-    this.defaultNetworks,
-    this.defaultTokens,
-    this.coinsListed,
-    this.stakeContracts,
+    this.version,
+    this.listedNetworks,
+    this.listedCoins,
+    this.offlineCoins,
+    this.listedStakes,
   });
 
   factory FetchResult.fromJson(Map<String, dynamic> json) => FetchResult(
-        appChecksum: json["appChecksum"],
-        defaultNetworks: json["defaultNetworks"]?.cast<Map<String, dynamic>>(),
-        defaultTokens: json["defaultTokens"]?.cast<Map<String, dynamic>>(),
-        coinsListed: json["coinsListed"]?.cast<Map<String, dynamic>>(),
-        stakeContracts: json["stakeContracts"]?.cast<Map<String, dynamic>>(),
+        version: json[EKey.version],
+        listedNetworks: json[EKey.listedNetworks]?.cast<Map<String, dynamic>>(),
+        listedCoins: json[EKey.listedCoins]?.cast<Map<String, dynamic>>(),
+        offlineCoins: json[EKey.offlineCoins]?.cast<Map<String, dynamic>>(),
+        listedStakes: json[EKey.listedStakes]?.cast<Map<String, dynamic>>(),
       );
 
   Map<String, dynamic> toJson() => {
-        "appChecksum": appChecksum,
-        "defaultNetworks": defaultNetworks,
-        "defaultTokens": defaultTokens,
-        "coinsListed": coinsListed,
-        "stakeContracts": stakeContracts,
+        EKey.version: version,
+        EKey.listedNetworks: listedNetworks,
+        EKey.listedCoins: listedCoins,
+        EKey.offlineCoins: offlineCoins,
+        EKey.listedStakes: listedStakes,
       };
 }
