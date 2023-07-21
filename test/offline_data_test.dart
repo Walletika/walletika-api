@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:walletika_api/src/core/core.dart';
 import 'package:walletika_api/walletika_api.dart';
 import 'package:test/test.dart';
 
@@ -11,7 +8,7 @@ void printDebug(String message) {
 
 void main() async {
   const String api =
-      'https://github.com/Walletika/metadata/raw/main/app_info_test.json';
+      'https://raw.githubusercontent.com/Walletika/walletika-api/main/test/data.json';
   const String wtkImage =
       'https://raw.githubusercontent.com/Walletika/metadata/main/coins/walletika.png';
 
@@ -25,62 +22,56 @@ isConnected: $isConnected
 """);
 
       expect(isConnected, isFalse);
-      expect(File(coinsAESPath).existsSync(), isTrue);
-      expect(File(coinsCacheAESPath).existsSync(), isTrue);
-      expect(File(coinsListedAESPath).existsSync(), isTrue);
     });
 
-    test('Test (getAppChecksum)', () async {
-      String? appChecksum = WalletikaAPI.getAppChecksum();
+    test('Test (version)', () async {
+      String? version = WalletikaAPI.version;
 
       printDebug("""
-appChecksum: $appChecksum
+version: $version
 """);
 
-      expect(appChecksum, isNull);
+      expect(version, isNull);
     });
 
-    test('Test (getDefaultNetworks)', () async {
-      List<Map<String, dynamic>>? defaultNetworks =
-          WalletikaAPI.getDefaultNetworks();
+    test('Test (listedNetworks)', () async {
+      List<Map<String, dynamic>>? listedNetworks = WalletikaAPI.listedNetworks;
 
       printDebug("""
-defaultNetworks: $defaultNetworks
+listedNetworks: $listedNetworks
 """);
 
-      expect(defaultNetworks, isNull);
+      expect(listedNetworks, isNull);
     });
 
-    test('Test (getDefaultTokens)', () async {
-      List<Map<String, dynamic>>? defaultTokens =
-          WalletikaAPI.getDefaultTokens();
+    test('Test (listedCoins)', () async {
+      List<Map<String, dynamic>>? listedCoins = WalletikaAPI.listedCoins;
 
       printDebug("""
-defaultTokens: $defaultTokens
+listedCoins: $listedCoins
 """);
 
-      expect(defaultTokens, isNull);
+      expect(listedCoins, isNull);
     });
 
-    test('Test (getCoinsListed)', () async {
-      List<Map<String, dynamic>>? coinsListed = WalletikaAPI.getCoinsListed();
+    test('Test (offlineCoins)', () async {
+      List<Map<String, dynamic>>? offlineCoins = WalletikaAPI.offlineCoins;
 
       printDebug("""
-coinsListed: $coinsListed
+offlineCoins: $offlineCoins
 """);
 
-      expect(coinsListed, isNull);
+      expect(offlineCoins, isNull);
     });
 
-    test('Test (getStakeContracts)', () async {
-      List<Map<String, dynamic>>? stakeContracts =
-          WalletikaAPI.getStakeContracts();
+    test('Test (listedStakes)', () async {
+      List<Map<String, dynamic>>? listedStakes = WalletikaAPI.listedStakes;
 
       printDebug("""
-stakeContracts: $stakeContracts
+listedStakes: $listedStakes
 """);
 
-      expect(stakeContracts, isNull);
+      expect(listedStakes, isNull);
     });
   });
 
@@ -255,10 +246,7 @@ imageURL: ${coin.imageURL}
 """);
 
       expect(coin.symbol, equals('USDT'));
-      expect(
-        coin.imageURL,
-        equals('https://etherscan.io/images/main/empty-token.png'),
-      );
+      expect(coin.imageURL, isNull);
     });
 
     test('Test (getCoinImage) for WTK', () async {
