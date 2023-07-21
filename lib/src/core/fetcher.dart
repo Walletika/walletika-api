@@ -6,27 +6,26 @@ import 'package:aescrypto/aescrypto.dart';
 import 'package:http/http.dart' as http;
 
 import '../models.dart';
+import 'constants.dart';
 
 Future<FetchResult> fetcher({
   required String apiURL,
   String? decryptionKey,
 }) async {
   Map<String, dynamic> result = {};
-  bool received = false;
 
   try {
     final http.Response response = await http.get(Uri.parse(apiURL));
     result = jsonDecode(response.body);
-    received = true;
   } on SocketException {
     // Nothing to do
   }
 
-  if (received && decryptionKey != null && result.length == 1) {
+  if (decryptionKey != null && result.containsKey(EKey.data)) {
     final AESCrypto cipher = AESCrypto(key: decryptionKey);
     result = jsonDecode(
       await cipher.decryptText(
-        bytes: Uint8List.fromList((result['data'] as List).cast<int>()),
+        bytes: Uint8List.fromList((result[EKey.data] as List).cast<int>()),
         hasKey: true,
       ),
     );
