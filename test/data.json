@@ -2,14 +2,14 @@
     "version": "1.0.0",
     "listedNetworks": [
         {
-            "rpc": "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            "rpc": "https://mainnet.infura.io/v3/0bbf89ffa7794d2f9fd1ebd4cae51edd",
             "name": "Ethereum Mainnet",
             "chainID": 1,
             "symbol": "ETH",
             "explorer": "https://etherscan.io"
         },
         {
-            "rpc": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            "rpc": "https://goerli.infura.io/v3/0bbf89ffa7794d2f9fd1ebd4cae51edd",
             "name": "Goerli ( Testnet )",
             "chainID": 5,
             "symbol": "ETH",
