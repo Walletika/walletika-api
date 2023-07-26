@@ -17,7 +17,7 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  http: ^1.1.0
+  http: ^0.13.6
   path: ^1.8.3
   coingecko_api: 1.1.1+1
   aescrypto:
