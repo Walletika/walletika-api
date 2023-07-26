@@ -293,7 +293,7 @@ class WalletikaAPI {
     final int currentTime = DateTime.now().millisecondsSinceEpoch;
     bool isValid = false;
 
-    if (currentTime < _cacheTime || vsCurrencies == _vsCurrenciesCache) {
+    if (currentTime < _cacheTime && vsCurrencies == _vsCurrenciesCache) {
       isValid = true;
     }
 
