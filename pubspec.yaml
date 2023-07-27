@@ -1,6 +1,6 @@
 name: walletika_api
 description: Walletika API cloud services.
-version: 3.0.0
+version: 3.0.1
 homepage: https://github.com/walletika
 repository: https://github.com/walletika/walletika-api
 issue_tracker: https://github.com/walletika/walletika-api/issues
