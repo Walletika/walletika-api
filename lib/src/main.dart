@@ -268,15 +268,6 @@ class WalletikaAPI {
       StorageController.coinsImagesCached.data.clear();
       await StorageController.coinsImagesCached.dump();
 
-      // Get some coins to be available by default
-      if (_fetchResult.listedNetworks?.isNotEmpty == true) {
-        await getCoinsImages(
-          _fetchResult.listedNetworks!
-              .map<CoinEntry>((e) => CoinEntry(symbol: e[EKey.symbol]))
-              .toList(),
-        );
-      }
-
       isValid = true;
     }
 
