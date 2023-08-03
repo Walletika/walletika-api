@@ -10,7 +10,7 @@ void main() async {
   const String api =
       'https://raw.githubusercontent.com/Walletika/walletika-api/main/test/data.json';
   const String wtkImage =
-      'https://raw.githubusercontent.com/Walletika/metadata/main/coins/walletika.png';
+      'https://raw.githubusercontent.com/Walletika/walletika-app-fetch/main/images/walletika.png';
 
   group('Walletika API Offline Data Group:', () {
     test('Test (init)', () async {
