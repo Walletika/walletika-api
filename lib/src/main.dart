@@ -132,7 +132,7 @@ class WalletikaAPI {
       }
 
       // Check from `offlineCoins`
-      if (price == null && id == null) {
+      if (price == null) {
         final String? address = coin.contractAddress?.toLowerCase();
         final Map<String, dynamic>? offCoin =
             StorageController.offlineCoins.data[address];
@@ -204,7 +204,7 @@ class WalletikaAPI {
       }
 
       // Check from `offlineCoins`
-      if (image == null && id == null) {
+      if (image == null) {
         final String? address = coin.contractAddress?.toLowerCase();
         final Map<String, dynamic>? offCoin =
             StorageController.offlineCoins.data[address];
