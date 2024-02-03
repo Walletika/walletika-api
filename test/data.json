@@ -54,18 +54,18 @@
         },
         {
             "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
-            "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
+            "contract": "0x37e53A19d17191454A532F1706a4b99aB76D7ABf",
             "name": "Walletika",
-            "symbol": "WTK",
+            "symbol": "WLTK",
             "decimals": 18
         }
     ],
     "offlineCoins": [
         {
             "name": "Walletika",
-            "symbol": "WTK",
-            "contracts": ["0xc4d3716b65b9c4c6b69e4e260b37e0e476e28d87"],
-            "price": 0.02,
+            "symbol": "WLTK",
+            "contracts": ["0x9ee10d2e9571aecfe5a604af7fe71b96eba84b7b"],
+            "price": 0.15,
             "image": "https://raw.githubusercontent.com/Walletika/walletika-app-fetch/main/images/walletika.png"
         },
         {
@@ -78,25 +78,23 @@
     ],
     "listedStakes": [
         {
-            "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
-            "contract": "0xbfAa034b854703f31B34eCC1c68C356feeb19268",
-            "startBlock": 23545120,
-            "endBlock": 128636320,
-            "startTime": 1665306000000,
-            "endTime": 1980925200000,
+            "rpc": "https://bsc-dataseed1.binance.org",
+            "contract": "0xddcc8B65bcC22D9386d6Aa0BF6e66d6c00e54EdD",
+            "startBlock": 34532757,
+            "endBlock": 45073557,
             "stakeToken": {
-                "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
+                "contract": "0x9eE10d2E9571AecfE5a604aF7fE71B96eBa84b7b",
                 "name": "Walletika",
-                "symbol": "WTK",
+                "symbol": "WLTK",
                 "decimals": 18,
-                "website": "https://walletika.com"
+                "website": "https://walletika.io"
             },
             "rewardToken": {
-                "contract": "0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87",
+                "contract": "0x9eE10d2E9571AecfE5a604aF7fE71B96eBa84b7b",
                 "name": "Walletika",
-                "symbol": "WTK",
+                "symbol": "WLTK",
                 "decimals": 18,
-                "website": "https://walletika.com"
+                "website": "https://walletika.io"
             },
             "isLocked": false
         }

@@ -9,7 +9,7 @@ void printDebug(String message) {
 void main() async {
   const String api =
       'https://raw.githubusercontent.com/Walletika/walletika-api/main/test/data.json';
-  const String wtkImage =
+  const String wltkImage =
       'https://raw.githubusercontent.com/Walletika/walletika-app-fetch/main/images/walletika.png';
 
   group('Walletika API Offline Data Group:', () {
@@ -150,11 +150,11 @@ changeIn24h: ${coin.changeIn24h}
       expect(coin.changeIn24h, isNull);
     });
 
-    test('Test (getCoinPrice) for WTK', () async {
+    test('Test (getCoinPrice) for WLTK', () async {
       CoinPrice coin = await WalletikaAPI.getCoinPrice(CoinEntry(
-        symbol: 'WTK',
+        symbol: 'WLTK',
         name: 'Walletika',
-        contractAddress: '0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87',
+        contractAddress: '0x9eE10d2E9571AecfE5a604aF7fE71B96eBa84b7b',
       ));
 
       printDebug("""
@@ -163,8 +163,8 @@ price: ${coin.price}
 changeIn24h: ${coin.changeIn24h}
 """);
 
-      expect(coin.symbol, equals('WTK'));
-      expect(coin.price, equals(0.02));
+      expect(coin.symbol, equals('WLTK'));
+      expect(coin.price, equals(0.15));
       expect(coin.changeIn24h, isNull);
     });
   });
@@ -172,9 +172,9 @@ changeIn24h: ${coin.changeIn24h}
   group('Coins Images Group:', () {
     test('Test (getCoinsImages)', () async {
       List<String> images = [
-        'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
-        'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png?1644979850',
-        'https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png?1624446912',
+        'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1696501628',
+        'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png?1696501970',
+        'https://assets.coingecko.com/coins/images/4713/small/polygon.png?1698233745',
       ];
       List<String> symbols = ['ETH', 'BNB', 'MATIC'];
       List<CoinImage> coins = await WalletikaAPI.getCoinsImages(
@@ -209,7 +209,7 @@ imageURL: ${coin.imageURL}
       expect(
           coin.imageURL,
           equals(
-            'https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663',
+            'https://assets.coingecko.com/coins/images/325/small/Tether.png?1696501661',
           ));
     });
 
@@ -230,7 +230,7 @@ imageURL: ${coin.imageURL}
       expect(
           coin.imageURL,
           equals(
-            'https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663',
+            'https://assets.coingecko.com/coins/images/325/small/Tether.png?1696501661',
           ));
     });
 
@@ -249,11 +249,11 @@ imageURL: ${coin.imageURL}
       expect(coin.imageURL, isNull);
     });
 
-    test('Test (getCoinImage) for WTK', () async {
+    test('Test (getCoinImage) for WLTK', () async {
       CoinImage coin = await WalletikaAPI.getCoinImage(CoinEntry(
-        symbol: 'WTK',
+        symbol: 'WLTK',
         name: 'Walletika',
-        contractAddress: '0xc4d3716B65b9c4c6b69e4E260b37e0e476e28d87',
+        contractAddress: '0x9eE10d2E9571AecfE5a604aF7fE71B96eBa84b7b',
       ));
 
       printDebug("""
@@ -261,8 +261,8 @@ symbol: ${coin.symbol}
 imageURL: ${coin.imageURL}
 """);
 
-      expect(coin.symbol, equals('WTK'));
-      expect(coin.imageURL, equals(wtkImage));
+      expect(coin.symbol, equals('WLTK'));
+      expect(coin.imageURL, equals(wltkImage));
     });
   });
 }
