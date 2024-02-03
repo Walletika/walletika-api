@@ -1,12 +1,14 @@
-## 3.0.1
+## 3.0.2
+- Upgrade getCoinID method to check as a coin and token
+- Always check the coin prices and images in offline
 
+## 3.0.1
 - Use GPL-3.0 license
 - Use http package version 0.13.6
 - Cache validator
 - Don't fetch listed networks images
 
 ## 3.0.0
-
 - Upgrade cache system.
 - Package infrastructure improvement
 - Added logs
