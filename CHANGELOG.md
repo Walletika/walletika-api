@@ -1,3 +1,6 @@
+## 3.0.3
+- Added ID parameter to OfflineCoin
+
 ## 3.0.2
 - Upgrade getCoinID method to check as a coin and token
 - Always check the coin prices and images in offline
