@@ -22,6 +22,9 @@ await WalletikaAPI.isConnected();
 // Get application version from API
 String? version = WalletikaAPI.version;
 
+// Get listCoinsAPI URL from API
+String? listCoinsAPI = WalletikaAPI.listCoinsAPI;
+
 // Get listed networks from API
 List<Map<String, dynamic>>? listedNetworks = WalletikaAPI.listedNetworks;
 
