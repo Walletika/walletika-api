@@ -115,7 +115,7 @@ class WalletikaAPI {
     final Map<String, CoinEntry> remainingIds = {};
 
     for (final CoinEntry coin in coins) {
-      String? id = coin.id;
+      final String? id = coin.id;
       double? price;
       double? changeIn24h;
 
@@ -138,7 +138,6 @@ class WalletikaAPI {
             StorageController.offlineCoins.data[address];
 
         if (offCoin?[EKey.contracts].contains(address) == true) {
-          id = offCoin?[EKey.id];
           price = offCoin![EKey.price];
         }
       }
@@ -196,7 +195,7 @@ class WalletikaAPI {
     final Map<String, CoinEntry> remainingIds = {};
 
     for (final CoinEntry coin in coins) {
-      String? id = coin.id;
+      final String? id = coin.id;
       String? image;
 
       // Check from the cache
@@ -211,7 +210,6 @@ class WalletikaAPI {
             StorageController.offlineCoins.data[address];
 
         if (offCoin?[EKey.contracts].contains(address) == true) {
-          id = offCoin?[EKey.id];
           image = offCoin?[EKey.image];
         }
       }
