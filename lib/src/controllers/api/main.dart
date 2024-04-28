@@ -138,14 +138,12 @@ class APIController {
   }
 
   /// Get all supported coins from `Walletika Repository`
-  static Future<Map<String, List<Map<String, dynamic>>>> listCoins(
+  static Future<Map<String, List<dynamic>>> listCoins(
     String apiURL,
   ) async {
-    final Map<String, List<Map<String, dynamic>>> result = await fetcher(
-      apiURL: apiURL,
-    ).then((result) => result.cast<String, List<Map<String, dynamic>>>());
+    final Map<String, dynamic> result = await fetcher(apiURL: apiURL);
 
     log("WalletikaAPI.APIController.listCoins result: ${result.length} coins received");
-    return result;
+    return result.cast<String, List<dynamic>>();
   }
 }
