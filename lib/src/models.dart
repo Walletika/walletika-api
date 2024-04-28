@@ -74,15 +74,17 @@ class OfflineCoin {
   final String name;
   final String symbol;
   final List<String> contracts;
-  final double price;
-  final String imageURL;
+  final double? price;
+  final String? imageURL;
+  final String? id;
 
   OfflineCoin({
     required this.name,
     required this.symbol,
     required this.contracts,
-    required this.price,
-    required this.imageURL,
+    this.price,
+    this.imageURL,
+    this.id,
   });
 
   factory OfflineCoin.fromJson(Map<String, dynamic> json) => OfflineCoin(
@@ -91,6 +93,7 @@ class OfflineCoin {
         contracts: json[EKey.contracts].cast<String>(),
         price: json[EKey.price],
         imageURL: json[EKey.image],
+        id: json[EKey.id],
       );
 
   Map<String, dynamic> toJson() => {
@@ -99,6 +102,7 @@ class OfflineCoin {
         EKey.contracts: contracts,
         EKey.price: price,
         EKey.image: imageURL,
+        EKey.id: id,
       };
 }
 
