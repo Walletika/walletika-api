@@ -14,6 +14,9 @@ class WalletikaAPI {
   /// Get application version
   static String? get version => _fetchResult.version;
 
+  /// Get listCoinsAPI URL
+  static String? get listCoinsAPI => _fetchResult.listCoinsAPI;
+
   /// Get listed networks
   static List<Map<String, dynamic>>? get listedNetworks =>
       _fetchResult.listedNetworks;
@@ -52,7 +55,7 @@ class WalletikaAPI {
     _fetchResult = await fetcher(
       apiURL: apiURL,
       decryptionKey: apiDecryptionKey,
-    );
+    ).then((result) => FetchResult.fromJson(result));
 
     // Storage initialization and loading
     // `coinsImagesCached` must be initialized before `allCoins`, because it using first
@@ -258,7 +261,9 @@ class WalletikaAPI {
   static Future<bool> update() async {
     bool isValid = false;
 
-    final Map<String, List<dynamic>> result = await APIController.listCoins();
+    final Map<String, List<dynamic>> result = _fetchResult.listCoinsAPI != null
+        ? await APIController.listCoins(_fetchResult.listCoinsAPI!)
+        : await APIController.listCoinGecko();
 
     if (result.isNotEmpty) {
       StorageController.allCoins.data.clear();

@@ -66,6 +66,9 @@ class StorageController<T> {
       ignoreFileExists: true,
     );
 
+    // Decryption for testing
+    // await _cipher.decryptFile(path: addAESExtension(_path));
+
     log("WalletikaAPI.StorageController.dump result: $outputPath");
   }
 }

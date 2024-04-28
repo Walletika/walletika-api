@@ -5,10 +5,9 @@ import 'dart:typed_data';
 import 'package:aescrypto/aescrypto.dart';
 import 'package:http/http.dart' as http;
 
-import '../models.dart';
 import 'constants.dart';
 
-Future<FetchResult> fetcher({
+Future<Map<String, dynamic>> fetcher({
   required String apiURL,
   String? decryptionKey,
 }) async {
@@ -31,5 +30,5 @@ Future<FetchResult> fetcher({
     );
   }
 
-  return FetchResult.fromJson(result);
+  return result;
 }

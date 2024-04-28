@@ -7,6 +7,7 @@ class EKey {
   static const String image = "image";
   static const String data = "data";
   static const String version = "version";
+  static const String listCoinsAPI = "listCoinsAPI";
   static const String listedNetworks = "listedNetworks";
   static const String listedCoins = "listedCoins";
   static const String offlineCoins = "offlineCoins";

@@ -104,6 +104,7 @@ class OfflineCoin {
 
 class FetchResult {
   final String? version;
+  final String? listCoinsAPI;
   final List<Map<String, dynamic>>? listedNetworks;
   final List<Map<String, dynamic>>? listedCoins;
   final List<Map<String, dynamic>>? offlineCoins;
@@ -111,6 +112,7 @@ class FetchResult {
 
   FetchResult({
     this.version,
+    this.listCoinsAPI,
     this.listedNetworks,
     this.listedCoins,
     this.offlineCoins,
@@ -119,6 +121,7 @@ class FetchResult {
 
   factory FetchResult.fromJson(Map<String, dynamic> json) => FetchResult(
         version: json[EKey.version],
+        listCoinsAPI: json[EKey.listCoinsAPI],
         listedNetworks: json[EKey.listedNetworks]?.cast<Map<String, dynamic>>(),
         listedCoins: json[EKey.listedCoins]?.cast<Map<String, dynamic>>(),
         offlineCoins: json[EKey.offlineCoins]?.cast<Map<String, dynamic>>(),
@@ -127,6 +130,7 @@ class FetchResult {
 
   Map<String, dynamic> toJson() => {
         EKey.version: version,
+        EKey.listCoinsAPI: listCoinsAPI,
         EKey.listedNetworks: listedNetworks,
         EKey.listedCoins: listedCoins,
         EKey.offlineCoins: offlineCoins,
