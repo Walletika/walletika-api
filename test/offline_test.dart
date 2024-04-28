@@ -32,6 +32,16 @@ version: $version
       expect(version, isNull);
     });
 
+    test('Test (listCoinsAPI)', () async {
+      String? listCoinsAPI = WalletikaAPI.listCoinsAPI;
+
+      printDebug("""
+listCoinsAPI: $listCoinsAPI
+""");
+
+      expect(listCoinsAPI, isNull);
+    });
+
     test('Test (listedNetworks)', () async {
       List<Map<String, dynamic>>? listedNetworks = WalletikaAPI.listedNetworks;
 

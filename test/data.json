@@ -1,5 +1,6 @@
 {
     "version": "1.0.0",
+    "listCoinsAPI": "https://raw.githubusercontent.com/Walletika/walletika-app-fetch/main/coins.json",
     "listedNetworks": [
         {
             "rpc": "https://mainnet.infura.io/v3/0bbf89ffa7794d2f9fd1ebd4cae51edd",
