@@ -1,3 +1,7 @@
+## 3.0.4
+- Remove ID parameter from OfflineCoin
+- Upgrade listCoins of APIController
+
 ## 3.0.3
 - Added ID parameter to OfflineCoin
 
